@@ -1,6 +1,11 @@
 
+# rGPT_openAI. Simple helper adapted from r-chatbot from James H Wade (@JamesHWade ).
+# See: https://github.com/JamesHWade/r-chatbot.git
+#
+
 library(purrr)
 library(httr2)
+
 rGPT_openAI <- function(
     .user,
     .history = NULL,

@@ -1,7 +1,7 @@
 
 # rGPT_openAI. Simple helper adapted from r-chatbot from James H Wade (@JamesHWade ).
 # See: https://github.com/JamesHWade/r-chatbot.git
-#
+# Alejandro Verri K. - averriK@github.com
 
 library(purrr)
 library(httr2)
@@ -16,11 +16,11 @@ rGPT_openAI <- function(
     .api_key = Sys.getenv("OPENAI_API_KEY"),
     .user_agent="@averriK",
     .headers="application/json",
-    .verbose=FALSE) {
+    .json=FALSE) {
 
   USER <-  list(list(role = "user", content = .user))
   SYSTEM <- list(list(role = "system", content = .system))
-  HISTORY <- .history
+  HISTORY <- .historys
   PROMPT <- c(SYSTEM, HISTORY, USER) |> purrr::compact() # preparePrompt(.user, .system=SYSTEM, .history)
   BODY <- list(model = .model,messages = PROMPT)
   REQ <- httr2::request(.base_url) |>
@@ -36,6 +36,6 @@ rGPT_openAI <- function(
 
   POST <- REQ |> httr2::resp_body_json(simplifyVector = TRUE)
   CONT <- POST$choices$message$content
-  ifelse(.verbose==TRUE,return(list(post=POST,content=CONT)),return(CONT))
+  ifelse(.json==TRUE,return(list(post=POST,content=CONT)),return(CONT))
 
 }

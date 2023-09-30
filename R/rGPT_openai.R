@@ -10,6 +10,7 @@ rGPT_openAI <- function(
     .base_url = "https://api.openai.com/v1",
     .api_key = Sys.getenv("OPENAI_API_KEY"),
     .user_agent="@averriK",
+    .headers="application/json",
     .verbose=FALSE) {
 
   USER <-  list(list(role = "user", content = .user))
@@ -20,7 +21,7 @@ rGPT_openAI <- function(
   REQ <- httr2::request(.base_url) |>
     httr2::req_url_path_append(.endpoint) |>
     httr2::req_auth_bearer_token(token = .api_key) |>
-    httr2::req_headers("Content-Type" = "application/json") |>
+    httr2::req_headers("Content-Type" = .headers) |>
     httr2::req_user_agent(.user_agent) |>
     httr2::req_body_json(BODY) |>
     httr2::req_retry(max_tries = 4) |>

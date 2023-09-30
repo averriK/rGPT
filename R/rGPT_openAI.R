@@ -20,7 +20,7 @@ rGPT_openAI <- function(
 
   USER <-  list(list(role = "user", content = .user))
   SYSTEM <- list(list(role = "system", content = .system))
-  HISTORY <- .historys
+  HISTORY <- .history
   PROMPT <- c(SYSTEM, HISTORY, USER) |> purrr::compact() # preparePrompt(.user, .system=SYSTEM, .history)
   BODY <- list(model = .model,messages = PROMPT)
   REQ <- httr2::request(.base_url) |>

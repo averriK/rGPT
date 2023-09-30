@@ -1,1 +1,2 @@
 # rGPT
+ChatGPT CLI Interface

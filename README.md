@@ -3,12 +3,7 @@ Basic functions and helpers for interaction with openAI and azureAI APIs.
 
 ## Installation:
 
-Using `remotes`:
 `remotes::install_github("averriK/rGPT")`
-
-
-Using `pak`:
-`pak::pak("averriK/rGPT")`
 
 
 ## Usage

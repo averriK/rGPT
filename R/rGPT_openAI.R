@@ -1,11 +1,3 @@
-
-# rGPT_openAI. Simple helper adapted from r-chatbot from James H Wade (@JamesHWade ).
-# See: https://github.com/JamesHWade/r-chatbot.git
-# Alejandro Verri K. - averriK@github.com
-
-library(purrr)
-library(httr2)
-
 rGPT_openAI <- function(
     .user,
     .history = NULL,
@@ -17,6 +9,11 @@ rGPT_openAI <- function(
     .user_agent="@averriK",
     .headers="application/json",
     .json=FALSE) {
+
+
+  # rGPT_openAI. Simple helper adapted from r-chatbot from James H Wade (@JamesHWade ).
+  # See: https://github.com/JamesHWade/r-chatbot.git
+  # Alejandro Verri K. - averriK@github.com
 
   USER <-  list(list(role = "user", content = .user))
   SYSTEM <- list(list(role = "system", content = .system))
